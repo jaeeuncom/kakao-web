@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>이재은 | 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --yellow: #FFE033;
+    --black: #1A1200;
+    --purple: #3A1FC1;
+    --purple-light: #EEEDFE;
+    --brown: #3D2B00;
+    --white: #ffffff;
+    --gray-bg: #F7F7F5;
+    --gray-text: #6B6B6B;
+    --gray-border: #E8E8E8;
+    --teal-bg: #E1F5EE;
+    --teal-text: #085041;
+    --coral-bg: #FAECE7;
+    --coral-text: #712B13;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans KR', -apple-system, 'Apple SD Gothic Neo', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--yellow);
+    padding: 14px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .nav-logo { font-size: 12px; font-weight: 900; color: var(--black); line-height: 1.3; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 700; color: var(--black); text-decoration: none; opacity: 0.6; transition: opacity 0.2s; }
+  .nav-links a:hover { opacity: 1; }
+
+  /* INNER WRAPPER */
+  .inner { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+
+  /* HERO */
+  #hero {
+    background: var(--yellow);
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding-top: 72px;
+  }
+  .hero-inner {
+    max-width: 900px; width: 100%; padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between; gap: 48px;
+  }
+  .hero-text { flex: 1; }
+  .hero-sublabel { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--brown); opacity: 0.55; margin-bottom: 20px; }
+  .hero-title { font-size: 40px; font-weight: 900; color: var(--black); line-height: 1.3; margin-bottom: 22px; word-break: keep-all; }
+  .hero-title .hl { color: var(--purple); }
+  .hero-desc { font-size: 15px; color: var(--brown); line-height: 1.9; margin-bottom: 36px; opacity: 0.75; word-break: keep-all; }
+  .hero-cta { display: inline-block; background: var(--black); color: var(--yellow); font-size: 14px; font-weight: 700; padding: 13px 26px; border-radius: 50px; text-decoration: none; transition: opacity 0.2s; }
+  .hero-cta:hover { opacity: 0.8; }
+
+  /* ID CARD */
+  .card-area { flex-shrink: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .lanyard-wrapper { transform-origin: top center; animation: swing 3.4s ease-in-out infinite; display: flex; flex-direction: column; align-items: center; transition: transform 0.3s; }
+  .card-area:hover .lanyard-wrapper { animation-play-state: paused; transform: scale(1.04); }
+  @keyframes swing { 0% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } 100% { transform: rotate(-6deg); } }
+  .lanyard-hint { font-size: 11px; color: var(--brown); opacity: 0.4; letter-spacing: 0.04em; }
+
+  .id-card { width: 172px; background: var(--white); border-radius: 14px; overflow: hidden; border: 1px solid rgba(0,0,0,0.1); }
+  .id-top { background: var(--purple); height: 8px; }
+  .id-body { padding: 20px 18px 18px; text-align: center; }
+  .id-avatar { width: 60px; height: 60px; border-radius: 50%; background: var(--purple-light); margin: 0 auto 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 900; color: var(--purple); }
+  .id-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .id-name { font-size: 16px; font-weight: 900; color: var(--black); margin-bottom: 3px; }
+  .id-role { font-size: 10px; color: var(--gray-text); margin-bottom: 12px; letter-spacing: 0.03em; }
+  .id-line { height: 1px; background: var(--gray-border); margin-bottom: 10px; }
+  .id-org { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; color: var(--purple); opacity: 0.7; }
+
+  /* SECTIONS */
+  .section-white { background: var(--white); padding: 100px 0; border-top: 1px solid var(--gray-border); }
+  .section-gray  { background: var(--gray-bg); padding: 100px 0; border-top: 1px solid var(--gray-border); }
+
+  .sec-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--purple); margin-bottom: 14px; }
+  .sec-title { font-size: 28px; font-weight: 900; color: var(--black); margin-bottom: 10px; word-break: keep-all; }
+  .sec-desc  { font-size: 14px; color: var(--gray-text); line-height: 1.75; margin-bottom: 44px; word-break: keep-all; }
+
+  /* LEARN GRID */
+  .learn-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .learn-card { background: var(--gray-bg); border-radius: 18px; padding: 30px 24px 26px; border: 1px solid var(--gray-border); position: relative; overflow: hidden; transition: transform 0.2s, border-color 0.2s; }
+  .learn-card:hover { transform: translateY(-4px); border-color: var(--purple); }
+  .learn-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--purple); opacity: 0; transition: opacity 0.2s; }
+  .learn-card:hover::before { opacity: 1; }
+  .learn-num { font-size: 11px; font-weight: 900; color: var(--purple); letter-spacing: 0.08em; margin-bottom: 14px; }
+  .learn-card-title { font-size: 17px; font-weight: 900; color: var(--black); line-height: 1.4; margin-bottom: 12px; word-break: keep-all; }
+  .learn-card-desc { font-size: 13px; color: var(--gray-text); line-height: 1.8; word-break: keep-all; }
+  .learn-card-icon { position: absolute; bottom: 18px; right: 18px; font-size: 26px; opacity: 0.12; }
+
+  /* ABOUT */
+  .intro-block { display: grid; grid-template-columns: 1fr 160px; gap: 48px; align-items: start; }
+  .intro-title { font-size: 28px; font-weight: 900; color: var(--black); line-height: 1.4; margin-bottom: 20px; word-break: keep-all; }
+  .intro-title span { color: var(--purple); }
+  .intro-text { font-size: 14px; color: var(--gray-text); line-height: 1.95; word-break: keep-all; }
+  .intro-photo { width: 160px; height: 200px; border-radius: 14px; overflow: hidden; background: var(--purple-light); display: flex; align-items: center; justify-content: center; border: 1px solid var(--gray-border); flex-shrink: 0; }
+  .intro-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .photo-placeholder { font-size: 11px; color: var(--purple); font-weight: 700; text-align: center; padding: 12px; line-height: 1.7; }
+
+  /* PROJECTS */
+  .projects-list { display: flex; flex-direction: column; gap: 20px; }
+  .project-card { background: var(--white); border: 1px solid var(--gray-border); border-radius: 18px; padding: 28px 30px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start; transition: border-color 0.2s, transform 0.2s; }
+  .project-card:hover { border-color: var(--purple); transform: translateY(-3px); }
+  .project-num { font-size: 11px; font-weight: 900; color: var(--purple); letter-spacing: 0.08em; margin-bottom: 8px; }
+  .project-title { font-size: 18px; font-weight: 900; color: var(--black); margin-bottom: 5px; line-height: 1.3; word-break: keep-all; }
+  .project-org { font-size: 12px; color: var(--gray-text); margin-bottom: 16px; display: flex; align-items: center; gap: 6px; }
+  .org-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--gray-text); opacity: 0.35; display: inline-block; flex-shrink: 0; }
+  .project-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+  .project-bullets li { font-size: 13px; color: var(--gray-text); line-height: 1.75; padding-left: 13px; position: relative; word-break: keep-all; }
+  .project-bullets li::before { content: ''; position: absolute; left: 0; top: 8px; width: 4px; height: 4px; border-radius: 50%; background: var(--purple); opacity: 0.4; }
+  .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px; }
+  .tag-purple { background: var(--purple-light); color: #3C3489; }
+  .tag-yellow { background: #FFF3A3; color: #7A5800; }
+  .tag-teal   { background: var(--teal-bg); color: var(--teal-text); }
+  .badge-col { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
+  .badge-award   { font-size: 11px; font-weight: 900; padding: 5px 11px; border-radius: 20px; background: var(--yellow); color: #7A5800; white-space: nowrap; }
+  .badge-done    { background: var(--teal-bg); color: var(--teal-text); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+  .badge-ongoing { background: var(--purple-light); color: #3C3489; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+
+  /* TMI */
+  .tmi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 36px; }
+  .tmi-card { background: var(--white); border-radius: 16px; padding: 22px; border: 1px solid var(--gray-border); transition: border-color 0.2s; }
+  .tmi-card:hover { border-color: var(--purple); }
+  .tmi-icon { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 16px; }
+  .icon-purple { background: var(--purple-light); }
+  .icon-yellow { background: #FFF3A3; }
+  .icon-teal   { background: var(--teal-bg); }
+  .icon-coral  { background: var(--coral-bg); }
+  .icon-blue   { background: #E6F1FB; }
+  .tmi-card-title { font-size: 13px; font-weight: 900; color: var(--black); margin-bottom: 9px; }
+  .tmi-card-body { font-size: 12px; color: var(--gray-text); line-height: 1.85; word-break: keep-all; }
+  .tmi-card-body strong { color: var(--black); font-weight: 700; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+  .mini-tag { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px; }
+  .mt-purple { background: var(--purple-light); color: #3C3489; }
+  .mt-teal   { background: var(--teal-bg); color: var(--teal-text); }
+  .mt-yellow { background: #FFF3A3; color: #7A5800; }
+  .mt-coral  { background: var(--coral-bg); color: var(--coral-text); }
+
+  .motto-bar { background: var(--yellow); border-radius: 14px; padding: 24px 28px; display: flex; align-items: center; gap: 18px; }
+  .motto-label { font-size: 11px; font-weight: 900; color: #7A5800; letter-spacing: 0.08em; flex-shrink: 0; }
+  .motto-divider { width: 1px; height: 24px; background: rgba(122,88,0,0.2); flex-shrink: 0; }
+  .motto-text { font-size: 17px; font-weight: 900; color: var(--black); word-break: keep-all; }
+
+  /* FOOTER */
+  footer { background: var(--black); padding: 52px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  .footer-name { font-size: 20px; font-weight: 900; color: var(--yellow); margin-bottom: 5px; }
+  .footer-role { font-size: 12px; color: rgba(255,255,255,0.4); }
+  .footer-link { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 50px; padding: 10px 20px; color: var(--white); text-decoration: none; font-size: 13px; font-weight: 700; transition: background 0.2s; }
+  .footer-link:hover { background: rgba(255,255,255,0.14); }
+  .github-icon { width: 17px; height: 17px; fill: currentColor; }
+  .footer-copy { width: 100%; font-size: 11px; color: rgba(255,255,255,0.2); padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 4px; }
+
+  /* FADE */
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .hero-inner { flex-direction: column; align-items: flex-start; padding: 0 20px; }
+    .hero-title { font-size: 28px; }
+    .section-white, .section-gray { padding: 72px 0; }
+    .inner { padding: 0 20px; }
+    .learn-grid { grid-template-columns: 1fr; }
+    .intro-block { grid-template-columns: 1fr; }
+    .project-card { grid-template-columns: 1fr; }
+    .badge-col { align-items: flex-start; }
+    footer { padding: 36px 20px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">kakao<br>tech<br>campus</div>
+  <ul class="nav-links">
+    <li><a href="#learn">배우고 싶은 것</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">프로젝트</a></li>
+    <li><a href="#tmi">TMI</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+
+    <div class="hero-text fade-up">
+      <p class="hero-sublabel">KAKAO TECH CAMPUS · 지원자 포트폴리오</p>
+      <h1 class="hero-title">
+        <span class="hl">카카오테크캠퍼스</span>에서<br>
+        함께하고 싶은<br>
+        개발자 이재은입니다
+      </h1>
+      <p class="hero-desc">
+        좋은 코드만큼 좋은 협업을 중요하게 생각해요.<br>
+        함께 성장하며 의미 있는 서비스를 만들고 싶습니다.
+      </p>
+      <a href="#learn" class="hero-cta">포트폴리오 보기</a>
+    </div>
+
+    <div class="card-area fade-up" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+      <div class="lanyard-wrapper">
+        <svg width="64" height="72" viewBox="0 0 64 72" style="display:block;" xmlns="http://www.w3.org/2000/svg">
+          <path fill="none" stroke="#3A1FC1" stroke-width="2.2" stroke-linecap="round">
+            <animate attributeName="d"
+              values="M32 4 C25 18,27 42,30 62 C31 67,32 72,32 72;M32 4 C39 18,37 42,34 62 C33 67,32 72,32 72;M32 4 C25 18,27 42,30 62 C31 67,32 72,32 72"
+              dur="3.4s" repeatCount="indefinite" calcMode="spline"
+              keySplines="0.45 0.05 0.55 0.95;0.45 0.05 0.55 0.95"/>
+          </path>
+          <rect x="24" y="0" width="16" height="6" rx="3" fill="#2A14A8"/>
+        </svg>
+        <div class="id-card">
+          <div class="id-top"></div>
+          <div class="id-body">
+            <div class="id-avatar">
+              <img src="profile.jpeg" alt="이재은 프로필"
+                onerror="this.style.display='none'; this.parentNode.innerHTML='재은'"/>
+            </div>
+            <p class="id-name">이재은</p>
+            <p class="id-role">소프트웨어 개발자</p>
+            <div class="id-line"></div>
+            <p class="id-org">KAKAO TECH CAMPUS</p>
+          </div>
+        </div>
+      </div>
+      <p class="lanyard-hint">클릭하면 About으로 이동</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- LEARN -->
+<section id="learn" class="section-white">
+  <div class="inner">
+    <p class="sec-label fade-up">WHY KAKAO TECH CAMPUS</p>
+    <h2 class="sec-title fade-up">카카오테크캠퍼스에서<br>가장 배우고 싶은 것</h2>
+    <p class="sec-desc fade-up">단순한 기술 습득을 넘어, 함께 만들어가는 경험을 원합니다.</p>
+    <div class="learn-grid">
+      <div class="learn-card fade-up">
+        <p class="learn-num">01</p>
+        <h3 class="learn-card-title">Agentic AI<br>활용 능력</h3>
+        <p class="learn-card-desc">AI 도구를 활용하는 수준을 넘어, 스스로 판단하고 행동하는 Agentic AI 시스템을 직접 설계하고 서비스에 녹여내는 능력을 키우고 싶습니다.</p>
+        <span class="learn-card-icon">🤖</span>
+      </div>
+      <div class="learn-card fade-up">
+        <p class="learn-num">02</p>
+        <h3 class="learn-card-title">코드 리뷰를 통한<br>성장</h3>
+        <p class="learn-card-desc">혼자서는 볼 수 없는 시야를 팀원의 피드백으로 넓히고 싶습니다. 좋은 코드를 함께 고민하는 문화 속에서 개발자로서 한 단계 도약하고 싶습니다.</p>
+        <span class="learn-card-icon">💬</span>
+      </div>
+      <div class="learn-card fade-up">
+        <p class="learn-num">03</p>
+        <h3 class="learn-card-title">진심을 다하는<br>협업</h3>
+        <p class="learn-card-desc">기술보다 사람이 먼저라고 생각합니다. 서로를 믿고 솔직하게 소통하며, 팀 전체가 함께 성장하는 협업의 진짜 의미를 경험하고 싶습니다.</p>
+        <span class="learn-card-icon">🤝</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section-gray">
+  <div class="inner">
+    <p class="sec-label fade-up">ABOUT</p>
+    <div class="intro-block fade-up">
+      <div>
+        <h2 class="intro-title">안녕하세요,<br><span>함께 성장하는 개발자</span><br>이재은입니다.</h2>
+        <p class="intro-text">경북대학교 컴퓨터학부에서 글로벌소프트웨어융합전공을 공부하며 스페인과 리투아니아 두 나라에서 교환학생을 경험했습니다. 낯선 환경에서도 배움을 멈추지 않는 방법을 배웠습니다. AI와 풀스택 개발에 관심이 있으며, 혼자 잘하는 개발자보다 팀과 함께 더 나은 결과를 만드는 개발자가 되고 싶습니다. 카카오테크캠퍼스에서 그런 성장을 함께 만들어가고 싶습니다.</p>
+      </div>
+      <div class="intro-photo">
+        <img src="profile.jpg" alt="이재은 프로필 사진"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+        <div class="photo-placeholder" style="display:none;">profile.jpg를<br>같은 폴더에<br>넣어주세요</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section-white">
+  <div class="inner">
+    <p class="sec-label fade-up">PROJECTS</p>
+    <h2 class="sec-title fade-up">프로젝트</h2>
+    <p class="sec-desc fade-up">직접 기획하고 개발한 프로젝트들을 소개합니다.</p>
+    <div class="projects-list">
+
+      <div class="project-card fade-up">
+        <div>
+          <p class="project-num">01</p>
+          <h3 class="project-title">홍수 예측 AI 모델 개발</h3>
+          <div class="project-org"><span>경북대학교</span><span class="org-dot"></span><span>2026년 3월 — 진행 중</span></div>
+          <ul class="project-bullets">
+            <li>서울 전역을 격자 단위로 분할하고 각 격자에 지형 데이터를 매핑하여 공간 데이터를 전처리했습니다.</li>
+            <li>시공간 및 환경 특성 데이터를 기반으로 XGBoost를 활용한 홍수 예측 모델을 개발 중입니다. 현재 성능 개선에 집중하고 있습니다!</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tag tag-purple">Python</span>
+            <span class="tag tag-purple">XGBoost</span>
+            <span class="tag tag-purple">GIS / 지형 데이터</span>
+            <span class="tag tag-teal">머신러닝</span>
+          </div>
+        </div>
+        <div class="badge-col"><span class="badge-ongoing">진행 중</span></div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div>
+          <p class="project-num">02</p>
+          <h3 class="project-title">포스 (POS) 시스템 설계</h3>
+          <div class="project-org"><span>소프트웨어 설계 수업 프로젝트</span><span class="org-dot"></span><span>Vilnius University · 2025년 2학기</span></div>
+          <ul class="project-bullets">
+            <li>카페, 바, 레스토랑, 스파, 네일샵 등 다양한 업종에 적용 가능한 유연한 POS 시스템을 설계했습니다.</li>
+            <li>Figma로 직관적인 UI 프로토타입을 제작하고, React로 프론트엔드를 구현했습니다.</li>
+            <li>Stripe API를 연동해 안전한 결제 처리 기능을 구축했습니다.</li>
+            <li>다이어그램 및 API 명세서 등 프로젝트 지원 문서를 작성했습니다.</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tag tag-purple">React</span>
+            <span class="tag tag-purple">Figma</span>
+            <span class="tag tag-teal">Stripe API</span>
+            <span class="tag tag-yellow">UI/UX 설계</span>
+          </div>
+        </div>
+        <div class="badge-col"><span class="badge-done">완료</span></div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div>
+          <p class="project-num">03</p>
+          <h3 class="project-title">Thumb-ler</h3>
+          <div class="project-org"><span>2024 대구 빛나는 소프트웨어 해커톤</span></div>
+          <ul class="project-bullets">
+            <li>텀블러 지참 시 고객에게 리워드를 제공하는 친환경 카페 웹 애플리케이션을 개발했습니다.</li>
+            <li>HTML, CSS, JavaScript로 핵심 프론트엔드 기능을 구현했습니다.</li>
+            <li>지도 API를 연동해 사용자가 근처 참여 카페를 지도에서 바로 확인할 수 있도록 했습니다.</li>
+          </ul>
+          <div class="tech-tags">
+            <span class="tag tag-purple">HTML / CSS / JS</span>
+            <span class="tag tag-teal">지도 API</span>
+            <span class="tag tag-yellow">친환경 서비스</span>
+          </div>
+        </div>
+        <div class="badge-col"><span class="badge-award">🏆 3위 수상</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TMI -->
+<section id="tmi" class="section-gray">
+  <div class="inner">
+    <p class="sec-label fade-up">TMI</p>
+    <h2 class="sec-title fade-up">이재은 TMI</h2>
+    <p class="sec-desc fade-up">이력서에는 담기지 않는 것들.</p>
+    <div class="tmi-grid">
+      <div class="tmi-card fade-up">
+        <div class="tmi-icon icon-purple">🌍</div>
+        <p class="tmi-card-title">글로벌 경험</p>
+        <p class="tmi-card-body">
+          <strong>경북대학교</strong> 2023.3 — 재학 중 (2027.2 졸업예정)<br>
+          <strong>Universidad de Almería</strong> 스페인 · 2025.2–6<br>
+          <strong>Vilnius University</strong> 리투아니아 · 2025.8–2026.1
+        </p>
+      </div>
+      <div class="tmi-card fade-up">
+        <div class="tmi-icon icon-yellow">💪</div>
+        <p class="tmi-card-title">간절하면 된다</p>
+        <p class="tmi-card-body">편의점, 헬스장, 학원, 호텔 주방까지.<br>해보지 않은 일이 없습니다.<br><strong>무엇이든 직접 뛰어드는 것</strong>이 저의 방식입니다.</p>
+      </div>
+      <div class="tmi-card fade-up">
+        <div class="tmi-icon icon-teal">💡</div>
+        <p class="tmi-card-title">관심 분야</p>
+        <p class="tmi-card-body">현재 가장 흥미를 느끼는 영역입니다.</p>
+        <div class="tag-row">
+          <span class="mini-tag mt-purple">AI / 머신러닝</span>
+          <span class="mini-tag mt-teal">풀스택 개발</span>
+          <span class="mini-tag mt-yellow">서비스 기획</span>
+        </div>
+      </div>
+      <div class="tmi-card fade-up">
+        <div class="tmi-icon icon-coral">🏆</div>
+        <p class="tmi-card-title">도전의 흔적</p>
+        <p class="tmi-card-body">2024 대구 빛나는 소프트웨어 해커톤에서 <strong>Thumb-ler</strong>로 <strong>3위 수상</strong>. 부딪혀봐야 성장한다고 믿습니다.</p>
+      </div>
+      <div class="tmi-card fade-up">
+        <div class="tmi-icon icon-blue">📷</div>
+        <p class="tmi-card-title">코딩 밖의 나</p>
+        <p class="tmi-card-body">새로운 곳을 여행하고, 직접 요리하고, 순간을 사진과 영상으로 기록하는 것을 좋아합니다.</p>
+        <div class="tag-row">
+          <span class="mini-tag mt-teal">여행</span>
+          <span class="mini-tag mt-yellow">요리</span>
+          <span class="mini-tag mt-coral">사진 / 영상</span>
+        </div>
+      </div>
+    </div>
+    <div class="motto-bar fade-up">
+      <span class="motto-label">DEV PHILOSOPHY</span>
+      <div class="motto-divider"></div>
+      <span class="motto-text">함께 성장하는 개발자</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <p class="footer-name">이재은</p>
+  </div>
+  <a href="https://github.com/YOUR_GITHUB_ID" target="_blank" class="footer-link">
+    <svg class="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="https://github.com/jaeeuncom"/>
+    </svg>
+    GitHub
+  </a>
+  <p class="footer-copy">© 2026 이재은. Kakao Tech Campus 지원 포트폴리오.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 70);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
